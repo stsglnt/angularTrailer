@@ -1,0 +1,87 @@
+
+   <header id="top_header" class="clearfix">
+       <div class="wrapper">
+          <a href="#" id="logo_inside"> <h1 class="logo">Movies<span>&amp;</span>Trailers</h1></a>
+          <!-- <a href="#" class="menu"><i class="fa fa-bars"></i></a> -->
+           <nav class="main_nav">
+               <a href="#top_movies" pageScroll >Popular Movies</a>
+               <a href="#top_shows" pageScroll >Popular In Theaters</a>
+           </nav> 
+
+       </div>
+   </header>
+    <router-outlet></router-outlet>
+   
+    <div class="container-custom news_letter" >
+      <h2>Find A Movie</h2>
+      <p>Search for a movie using the form below</p>
+      <form (submit)="searchMovies()" class="sign_up_form">
+          <input id="searchInput" type="text" [(ngModel)]="searchStr" name="searchStr" placeholder="Movie Title">
+          <br>
+          <button class="button">Find</button>
+      </form>
+    </div>
+
+<div  *ngIf="searchRes" class="wrapper searchRes clearfix">
+    <div >
+        <h2>Search Results</h2>
+        <p *ngIf="error">Sorry, we could not find {{searchStr}}</p>
+    </div>    
+            <div class="row-custom">
+                <div class="post" *ngFor="let movie of searchRes;let i=index">
+                    <div *ngIf=" i < 12 ">
+                        <a routerLink="/movie/{{movie.id}}"  pageScroll href="#top_header" ><img *ngIf="movie.poster_path" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt=""></a>
+                        <h6>{{movie.title}}</h6>
+                    </div>    
+                </div>
+            </div>
+</div>  
+  
+    <section name="movies" id="top_movies" class="clearfix">
+      <div class="wrapper">
+            <header class="clearfix">
+                <h2>Popular Movies</h2>
+            </header>
+            
+            <div class="row-custom">
+                <div class="post" *ngFor="let movie of popularMovies;let i=index">
+                    <div *ngIf=" i < 12 ">
+                       <a routerLink="/movie/{{movie.id}}" pageScroll href="#top_header" > <img *ngIf="movie.poster_path"  src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt=""></a>
+                        <h6>{{movie.title}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="top_shows" name="shows" class="clearfix">
+         <div class="wrapper">
+            <header class="clearfix">
+                <h2>Popular In Theaters</h2>
+            </header>
+            
+            <div class="row-custom">
+                  <div class="post" *ngFor="let movie of popularShows;let i=index">
+                    <div *ngIf=" i < 12 ">
+                       <a routerLink="/movie/{{movie.id}}"  pageScroll href="#top_header" > <img *ngIf="movie.poster_path" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt=""></a> 
+                        <h6>{{movie.title}}</h6>
+
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="news_letter">
+        <div class="newsletter_inner">
+            <h2>Check out our websites</h2>
+            
+        </div>
+    </section>
+       	<a href="#0" class="cd-top">Top</a>
+
+    <footer id="main_footer">
+        <p class="logo">Movies<span>&amp;</span>Trailers</p>
+        <p class="copyright">&copy; 2017 Movies &amp; Trailers. All Rights Reserved</p>
+    </footer>
+    
