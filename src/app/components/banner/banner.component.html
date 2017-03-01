@@ -13,7 +13,6 @@
                    <p>Popularity: {{movie.popularity}}</p>
                    <p>Release Date: {{movie.release_date}}</p>
                 </div>
-    <div id="anchorTrailers" style="visibility: hidden"></div>
                 
                 <p class="description">{{movie.overview}}</p>
                 <div class="links"> 
@@ -22,6 +21,7 @@
                     <a href="http://imdb.com/title/{{movie.imdb_id}}" target="_blank">IMDb</a>
                     <br>
                 </div>
+                <div id="anchorTrailers" style="visibility: hidden"></div>             
                 <a (click)="openTrailers()" class="button" id="viewTrailersButton" pageScroll  href="#anchorTrailers">View Trailers</a>
             
         </div>
