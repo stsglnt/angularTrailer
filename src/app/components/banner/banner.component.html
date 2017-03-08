@@ -22,20 +22,19 @@
                     <br>
                 </div>
                 <div id="anchorTrailers" style="visibility: hidden"></div>             
-                <a (click)="openTrailers()" class="button" id="viewTrailersButton" pageScroll  href="#anchorTrailers">View Trailers</a>
-            
+                <button [disabled]="!a" (click)="openTrailers()" class="button" id="viewTrailersButton" pageScroll  href="#anchorTrailers">View Trailers</button>
+                <p *ngIf="!a" id="noTrailerText">Sorry, we couldn't find any trailer to this movie</p>
         </div>
         </div>
     </div>
     </section>
-    <section id="trailer-section" [@trailerPanel]="state">
-           <div class="trailerWrapper" [@trailersItself]="state" >
-                <iframe width="420" height="315" *ngIf='key' 
-                    [src]="url">
-                </iframe>
-                <iframe width="420" height="315" *ngIf='key2' 
-                    [src]="url2">
-                </iframe>
+    <section id="trailer-section" [@trailerPanel]="state" >
+           <div class="trailerWrapper" [@trailersItself]="state"  >
+       
+                <youtube-player *ngFor="let singletrailer of alltrailers"
+      [videoId]="singletrailer.key"
+     
+    ></youtube-player>
             
             </div>
 

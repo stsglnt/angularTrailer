@@ -31,30 +31,34 @@ import { DomSanitizer} from '@angular/platform-browser';
       ]),
       trigger('trailersItself', [
             state('inactive', style({
-                marginLeft: '-1200px', 
+                opacity: 0
                 
             })),
             state('active', style({
-                marginLeft: '0px',
-                
+                opacity: 1                
 
             })),
-            transition('inactive => active', animate('400ms ease-in')),
-            transition('active => inactive', animate('50ms ease-out')),
+            transition('inactive => active', animate('900ms ease-in')),
+            transition('active => inactive', animate('90ms ease-out')),
       ])
             
         ]
 })
 export class BannerComponent {
     state: string = 'inactive';
+    noTrailers: boolean = false;
     movie: Object;
-    key: any;
-    key2: any;
+    key: string;
+    key2: string;
     bgPhoto: any;
+    alltrailers: Object;
     bg: any;
     element: any;
+    trailerStatus: any;
     url; 
+    a;
     url2; 
+    getAlltrailer: any;
     constructor( 
          private _movieService: MovieService,
          private router: ActivatedRoute, 
@@ -71,21 +75,23 @@ export class BannerComponent {
                 
             })
             this._movieService.getTrailer(id).subscribe(trailers => {
-                if (trailers.results[0] ) {
-                    this.key = trailers.results[0].key;
                 
-             this.url = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+this.key);
+                this.alltrailers = trailers.results; 
+                this.trailerStatus = () => {
+                    if(trailers.results[0]){
+                    this.noTrailers = true;
+                } else {
+                    this.noTrailers = false;
                 }
-            })
-            this._movieService.getTrailer(id).subscribe(trailers => {
-                if (trailers.results[1] ) {
-                    this.key2 = trailers.results[1].key;
+                    return this.noTrailers;
+            }
+            this.a = this.trailerStatus();
                 
-             this.url2 = this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+this.key2);
-                }
+                
+
             })
-         
-            });
+                 
+          });
       
        
          
@@ -93,10 +99,10 @@ export class BannerComponent {
       
 
      openTrailers(){
-         this.state = (this.state === 'inactive' ? 'active' : 'inactive');
-     
-        }
+            this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+            
      }
+    }
         
         
     

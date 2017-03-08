@@ -16,10 +16,11 @@ export class MovieComponent {
     searchStr: string;
     error: boolean = true; 
     toTop: any;
-
+    imagePath: string;
 
 
     constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _elementRef: ElementRef) {
+        this.imagePath = '../../../musicTracks.jpg'
         this._movieService.getPopular().subscribe(res => {
             this.popularMovies = res.results;
         })

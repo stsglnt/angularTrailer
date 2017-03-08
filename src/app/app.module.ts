@@ -15,6 +15,7 @@ import { SafePipe } from './pipes/safe.pipe'
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import {Ng2PageScrollModule} from 'ng2-page-scroll/ng2-page-scroll';
+import { YoutubePlayerModule } from 'ng2-youtube-player'; 
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {Ng2PageScrollModule} from 'ng2-page-scroll/ng2-page-scroll';
     ModalModule.forRoot(),
     Ng2PageScrollModule.forRoot(),
     BootstrapModalModule,
+    YoutubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
