@@ -23,6 +23,7 @@ export class MovieComponent {
         this.imagePath = '../../../musicTracks.jpg';
         this._movieService.getPopular().subscribe(res => {
           console.log('changes from branch');
+          console.log('changes from branch 2');
             this.popularMovies = res.results;
         })
         this._movieService.getShows().subscribe(res => {
