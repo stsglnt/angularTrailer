@@ -14,7 +14,7 @@ export class MovieComponent {
     popularShows: Array<Object>;
     searchRes: Array<Object>;
     searchStr: string;
-    error: boolean = true; 
+    error: boolean = true;
     toTop: any;
     imagePath: string;
 
@@ -27,18 +27,19 @@ export class MovieComponent {
         this._movieService.getShows().subscribe(res => {
             this.popularShows = res.results;
         })
-  
+
       PageScrollConfig.defaultDuration = 450;
 
     }
     searchMovies(){
         this._movieService.searchMovies(this.searchStr).subscribe(res => {
+          console.log('some not important changes');
             this.searchRes = res.results;
             if(this.searchRes.length == 0) {
                 this.error = true;
             } else this.error = false;
         })
     }
- 
+
 
 }
