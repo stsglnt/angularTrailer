@@ -34,6 +34,7 @@ export class MovieComponent {
     }
     searchMovies(){
         this._movieService.searchMovies(this.searchStr).subscribe(res => {
+          console.log('some not important changes');
             this.searchRes = res.results;
             if(this.searchRes.length == 0) {
                 this.error = true;
