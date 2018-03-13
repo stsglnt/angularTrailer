@@ -22,9 +22,6 @@ import { DomSanitizer} from '@angular/platform-browser';
             state('active', style ({
                 display: 'block',
                 marginTop: '0px',
-                
-                
-                
             })),
             transition('inactive => active', animate('100ms ease-in')),
             transition('active => inactive', animate('400ms ease-out')),
@@ -57,6 +54,7 @@ export class BannerComponent {
     trailerStatus: any;
     url; 
     a;
+    testChange: any;
     url2; 
     getAlltrailer: any;
     constructor( 
@@ -86,23 +84,13 @@ export class BannerComponent {
                     return this.noTrailers;
             }
             this.a = this.trailerStatus();
-                
-                
-
             })
-                 
           });
-      
-       
-         
         }
-      
-
      openTrailers(){
             this.state = (this.state === 'inactive' ? 'active' : 'inactive');
-            
      }
-    }
+    } 
         
         
     

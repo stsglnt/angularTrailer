@@ -20,8 +20,9 @@ export class MovieComponent {
 
 
     constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _elementRef: ElementRef) {
-        this.imagePath = '../../../musicTracks.jpg'
+        this.imagePath = '../../../musicTracks.jpg';
         this._movieService.getPopular().subscribe(res => {
+          console.log('changes from branch');
             this.popularMovies = res.results;
         })
         this._movieService.getShows().subscribe(res => {
