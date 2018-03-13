@@ -14,20 +14,21 @@ export class MovieComponent {
     popularShows: Array<Object>;
     searchRes: Array<Object>;
     searchStr: string;
-    error: boolean = true; 
+    error: boolean = true;
     toTop: any;
     imagePath: string;
 
 
     constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _elementRef: ElementRef) {
-        this.imagePath = '../../../musicTracks.jpg'
+        this.imagePath = '../../../musicTracks.jpg';
         this._movieService.getPopular().subscribe(res => {
+          console.log('changes from branch');
             this.popularMovies = res.results;
         })
         this._movieService.getShows().subscribe(res => {
             this.popularShows = res.results;
         })
-  
+
       PageScrollConfig.defaultDuration = 450;
 
     }
@@ -39,6 +40,6 @@ export class MovieComponent {
             } else this.error = false;
         })
     }
- 
+
 
 }
