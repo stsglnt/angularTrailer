@@ -23,6 +23,7 @@ export class MovieComponent {
         this.imagePath = '../../../musicTracks.jpg';
         this._movieService.getPopular().subscribe(res => {
           console.log('changes from branch');
+          console.log('changes from branch 2');
             this.popularMovies = res.results;
         })
         this._movieService.getShows().subscribe(res => {
@@ -35,6 +36,9 @@ export class MovieComponent {
     searchMovies(){
         this._movieService.searchMovies(this.searchStr).subscribe(res => {
           console.log('just random for test');
+
+          console.log('some not important changes');
+
           console.log('some not important changes');
             this.searchRes = res.results;
             if(this.searchRes.length == 0) {
